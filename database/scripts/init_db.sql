@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS
     );
 
 CREATE TABLE IF NOT EXISTS
-    ratings (
+    rating (
         client_id BIGINT,
         book_id BIGINT, 
         progress SMALLINT,
