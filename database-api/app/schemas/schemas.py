@@ -2,29 +2,52 @@ from typing import Union, List
 from pydantic import BaseModel
 
 
-class Client(BaseModel):
+class OrmBaseModel(BaseModel):
+    
+    class Config: 
+        orm_mode = True
+
+
+class Client(OrmBaseModel):
 
     client_id: int
-    age_group: Union[str, None]
+    client_age: Union[int, None]
     client_sex: Union[bool, None]
 
     class Config: 
         orm_mode = True
 
 
-class Book(BaseModel):
-        
-    book_id: int
-    book_title: str
-    book_issue_year: Union[int, None]
-    genres: Union[List[str], None]
-    authors: Union[List[str], None]
+class Genre(OrmBaseModel):
+    
+    genre_id: int
+    genre_name: str
+
+    class Config: 
+        orm_mode = True
+
+class Author(OrmBaseModel):
+
+    author_id: int
+    author_name: str
 
     class Config: 
         orm_mode = True
 
 
-class Rating(BaseModel):
+class Book(OrmBaseModel):
+        
+    book_id: int
+    book_title: str
+    book_issue_year: Union[int, None]
+    genres: Union[List[Genre], None]
+    authors: Union[List[Author], None]
+
+    class Config: 
+        orm_mode = True
+
+
+class Rating(OrmBaseModel):
         
     client_id: int
     book_id: int
@@ -34,9 +57,9 @@ class Rating(BaseModel):
 
     class Config: 
         orm_mode = True
-        
 
-class Message(BaseModel):
+
+class Message(OrmBaseModel):
     message: str
 
 
