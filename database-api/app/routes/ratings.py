@@ -6,9 +6,11 @@ from app.utils import commit_transaction
 
 tags = ["Ratings"]
 
+
 @app.get("/select_all_ratings", tags=tags, response_model=List[schemas.Rating])
-def select_all_ratings(limit: int=None):
+def select_all_ratings(limit: int = None):
     return db.query(models.Rating).limit(limit).all()
+
 
 @app.post("/insert_ratings", tags=tags, responses=schemas.transaction_responses)
 def insert_ratings(ratings: List[schemas.Rating]):

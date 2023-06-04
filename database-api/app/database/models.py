@@ -1,6 +1,14 @@
 from app import Base
 from sqlalchemy.orm import relationship
-from sqlalchemy import Boolean, Column, ForeignKey, SmallInteger, BigInteger, VARCHAR, Table
+from sqlalchemy import (
+    Boolean,
+    Column,
+    ForeignKey,
+    SmallInteger,
+    BigInteger,
+    VARCHAR,
+    Table,
+)
 
 
 class Client(Base):
@@ -12,15 +20,17 @@ class Client(Base):
 
 
 book_genre = Table(
-    "book_genre", Base.metadata,
+    "book_genre",
+    Base.metadata,
     Column("book_id", ForeignKey("books.book_id"), primary_key=True),
-    Column("genre_id", ForeignKey("genres.genre_id"), primary_key=True)
+    Column("genre_id", ForeignKey("genres.genre_id"), primary_key=True),
 )
 
 book_author = Table(
-    "book_author", Base.metadata,
+    "book_author",
+    Base.metadata,
     Column("book_id", ForeignKey("books.book_id"), primary_key=True),
-    Column("author_id", ForeignKey("authors.author_id"), primary_key=True)
+    Column("author_id", ForeignKey("authors.author_id"), primary_key=True),
 )
 
 
