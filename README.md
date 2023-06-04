@@ -6,5 +6,5 @@
 * POSTGRES_PASSWORD
 * POSTGRES_CONNECTION_STRING
 # Run
-* ```terminal docker compose build```
-* ```terminal docker compose up```
+* ```console docker compose build```
+* ```console docker compose up```
